@@ -9,7 +9,7 @@ import MapView from './components/MapView';
 import { ShareModal, FeedbackModal, OrgDetailModal, GetListedModal } from './components/Modals';
 import { ORGANISATIONS } from './constants';
 import { FilterState, Organisation } from './types';
-import { SearchX, LayoutGrid } from 'lucide-react';
+import { SearchX, LayoutGrid, Info } from 'lucide-react';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'directory' | 'map'>('directory');
@@ -109,6 +109,15 @@ const App: React.FC = () => {
               />
 
               <div className="flex-grow">
+                {/* Data Sourcing Disclaimer Banner */}
+                <div className="mb-8 p-4 bg-[#e1e9de]/30 border border-[#e1e9de] rounded-2xl flex items-start gap-3">
+                  <Info className="w-4 h-4 text-[#1db4ab] mt-0.5 shrink-0" />
+                  <p className="text-[11px] font-medium text-[#282e3e]/70 leading-relaxed">
+                    <span className="font-black text-[#282e3e] uppercase tracking-wider mr-1">Disclaimer:</span>
+                    This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa.
+                  </p>
+                </div>
+
                 <div className="flex items-center justify-between mb-8 border-b border-[#e1e9de] pb-6">
                   <div className="flex items-center">
                     <LayoutGrid className="w-5 h-5 text-[#282e3e]/20 mr-2" />

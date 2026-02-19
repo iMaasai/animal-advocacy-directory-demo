@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { MapPin, Info, Sparkles, TrendingUp, Users, ChevronRight, LayoutGrid, Loader2, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
+import { MapPin, Info, Sparkles, Map, Users, ChevronRight, LayoutGrid, Loader2, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
 import * as d3 from 'https://esm.sh/d3-geo@3';
 import { Organisation } from '../types';
 
@@ -95,7 +95,7 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
         <div className="flex items-center justify-between mb-8 sm:mb-12 border-b border-[#e1e9de] pb-6">
           <div className="flex items-center gap-3">
              <div className="p-2 bg-[#1db4ab]/10 rounded-lg text-[#1db4ab]">
-                <TrendingUp className="w-4 h-4" />
+                <Map className="w-4 h-4" />
               </div>
               <h2 className="text-[10px] font-black text-[#282e3e] uppercase tracking-[0.2em]">Geographic Movement Distribution</h2>
           </div>
@@ -237,9 +237,9 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
              </div>
 
              <div className="p-6 bg-[#b2a942]/5 border-2 border-[#b2a942]/10 rounded-3xl mt-12">
-               <h4 className="text-[10px] font-black text-[#b2a942] uppercase tracking-[0.2em] mb-2">Map Accuracy</h4>
+               <h4 className="text-[10px] font-black text-[#b2a942] uppercase tracking-[0.2em] mb-2">Data Sourcing</h4>
                <p className="text-[11px] font-medium text-[#282e3e]/60 leading-relaxed italic">
-                 "This mapping is illustrative based on our curated directory database. It does not reflect unofficial or non-listed grassroots groups."
+                 "This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa."
                </p>
              </div>
           </div>

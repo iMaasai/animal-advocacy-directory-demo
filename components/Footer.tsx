@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Linkedin, Mail, Twitter, Globe, ArrowUpRight } from 'lucide-react';
+import { Heart, Linkedin, Mail, Twitter, Globe, ArrowUpRight, ShieldAlert } from 'lucide-react';
 
 interface FooterProps {
   onJoinDirectory: () => void;
@@ -17,6 +17,14 @@ const Footer: React.FC<FooterProps> = ({ onJoinDirectory }) => {
             <p className="text-[#e1e9de]/60 mb-6 leading-relaxed font-medium">
               An initiative supported by Animal Advocacy Africa to map and connect the movement across the continent. Together, we can build a more compassionate future.
             </p>
+            
+            {/* Global Disclaimer in Footer */}
+            <div className="mt-8 pt-8 border-t border-white/5 flex gap-3">
+              <ShieldAlert className="w-4 h-4 text-[#b2a942] shrink-0" />
+              <p className="text-[10px] text-[#e1e9de]/40 font-medium leading-relaxed italic">
+                Disclaimer: This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa.
+              </p>
+            </div>
           </div>
           
           <div className="min-w-[280px]">
