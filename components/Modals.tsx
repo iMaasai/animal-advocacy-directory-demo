@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { X, Copy, Check, Send, Loader2, MessageSquareHeart, Layout, MapPin, Globe, Instagram, Mail, Building2, Briefcase, Footprints, Facebook, Linkedin, Twitter, Share2, ClipboardList, ExternalLink, FileText } from 'lucide-react';
+
+import React, { useState, useMemo } from 'react';
+import { X, Copy, Check, Send, Loader2, MessageSquareHeart, Layout, MapPin, Globe, Instagram, Mail, Building2, Briefcase, Footprints, Facebook, Linkedin, Twitter, Share2, ClipboardList, ExternalLink, FileText, Sparkles, ChevronRight } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 import { Organisation } from '../types';
-import { getDirectDriveUrl } from '../constants';
+import { getDirectDriveUrl, ORGANISATIONS } from '../constants';
 
 interface ModalProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ interface OrgDetailModalProps {
   org: Organisation | null;
   isOpen: boolean;
   onClose: () => void;
+  onSelectOrg?: (org: Organisation) => void;
 }
 
 export const GetListedModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
@@ -85,7 +87,7 @@ export const GetListedModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onClose }) => {
+export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onClose, onSelectOrg }) => {
   if (!isOpen || !org) return null;
 
   const getSocialIcon = (url: string) => {
@@ -109,18 +111,46 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
   const logoUrl = getDirectDriveUrl(org.logo);
   const countries = org.country.split(',').map(c => c.trim()).sort();
 
+  // Find similar organisations
+  const similarOrgs = useMemo(() => {
+    if (!org) return [];
+    
+    return ORGANISATIONS
+      .filter(o => o.id !== org.id)
+      .map(o => {
+        let score = 0;
+        // Shared Focus
+        const sharedFocus = o.focus.filter(f => org.focus.includes(f));
+        score += sharedFocus.length * 5;
+        
+        // Shared Species
+        const sharedSpecies = o.species.filter(s => org.species.includes(s));
+        score += sharedSpecies.length * 3;
+        
+        // Same main country
+        if (o.country.includes(org.country.split(',')[0])) {
+          score += 2;
+        }
+
+        return { org: o, score };
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3)
+      .map(item => item.org);
+  }, [org]);
+
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
       <div className="fixed inset-0 bg-[#282e3e]/80 backdrop-blur-md transition-opacity" onClick={onClose} />
       
-      <div className="bg-white rounded-[2rem] w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl flex flex-col border border-[#e1e9de]">
+      <div className="bg-white rounded-[2rem] w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl flex flex-col border border-[#e1e9de] animate-in fade-in slide-in-from-bottom-4 duration-300">
         {/* Header Section */}
         <div className="bg-[#fcfdfc] border-b border-[#e1e9de] p-6 sm:p-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 relative">
           <button onClick={onClose} className="absolute top-6 right-6 p-2 text-[#282e3e]/30 hover:text-[#282e3e] hover:bg-[#e1e9de]/30 rounded-full transition-all">
             <X className="w-6 h-6" />
           </button>
 
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-white border-2 border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] overflow-hidden shadow-sm">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-white border-2 border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] overflow-hidden shadow-sm transition-transform duration-500 hover:scale-105">
             {org.logo ? (
               <img 
                 src={logoUrl} 
@@ -166,7 +196,7 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
         </div>
 
         {/* Content Section */}
-        <div className="flex-grow overflow-y-auto p-6 sm:p-10">
+        <div className="flex-grow overflow-y-auto p-6 sm:p-10 space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             
             {/* Left Column: Contact & Regions */}
@@ -237,8 +267,53 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                 </div>
               </div>
             </div>
-
           </div>
+
+          {/* Similar Organisations Section */}
+          {similarOrgs.length > 0 && (
+            <div className="pt-10 border-t border-[#e1e9de]">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-[#1db4ab]/10 rounded-lg text-[#1db4ab]">
+                    <Sparkles className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-sm font-black text-[#282e3e] uppercase tracking-wider">Similar Organisations</h3>
+                </div>
+                <p className="text-[10px] font-black text-[#282e3e]/30 uppercase tracking-[0.1em]">Found via shared focus areas</p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {similarOrgs.map((similar) => {
+                  const similarLogo = getDirectDriveUrl(similar.logo);
+                  return (
+                    <button
+                      key={similar.id}
+                      onClick={() => onSelectOrg?.(similar)}
+                      className="group text-left p-4 bg-[#fcfdfc] border-2 border-[#e1e9de] rounded-2xl hover:border-[#1db4ab] hover:bg-white transition-all flex items-center gap-4"
+                    >
+                      <div className="w-12 h-12 bg-white border border-[#e1e9de] rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden">
+                        {similar.logo ? (
+                          <img src={similarLogo} alt="" className="w-full h-full object-contain p-2" />
+                        ) : (
+                          <span className="text-lg font-black text-[#1db4ab]">{similar.name.charAt(0)}</span>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="text-xs font-bold text-[#282e3e] truncate group-hover:text-[#1db4ab] transition-colors">
+                          {similar.name}
+                        </h4>
+                        <div className="flex items-center text-[9px] font-black uppercase tracking-widest text-[#282e3e]/40 mt-1">
+                          <MapPin className="w-2.5 h-2.5 mr-1" />
+                          <span className="truncate">{similar.country.split(',')[0]}</span>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-4 h-4 ml-auto text-[#282e3e]/10 group-hover:text-[#1db4ab] transition-all" />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Footer Action */}

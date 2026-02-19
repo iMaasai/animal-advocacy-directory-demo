@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -166,6 +167,7 @@ const App: React.FC = () => {
         org={selectedOrg}
         isOpen={!!selectedOrg}
         onClose={() => setSelectedOrg(null)}
+        onSelectOrg={setSelectedOrg}
       />
     </div>
   );
