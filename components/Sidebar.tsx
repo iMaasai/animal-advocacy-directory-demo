@@ -10,10 +10,11 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
+  // Set initial state to false for all groups to be collapsed by default
   const [expandedGroups, setExpandedGroups] = useState({
-    regions: true,
-    foci: true,
-    species: true
+    regions: false,
+    foci: false,
+    species: false
   });
 
   const toggleGroup = (group: keyof typeof expandedGroups) => {
