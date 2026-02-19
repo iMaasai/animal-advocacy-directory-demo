@@ -32,7 +32,10 @@ const OrgCard: React.FC<OrgCardProps> = ({ org, onViewDetails }) => {
       <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#1db4ab]/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
       
       <div className="flex items-start mb-6">
-        <div className="w-14 h-14 rounded-xl bg-gray-50 overflow-hidden border border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] font-black text-xl">
+        <div 
+          onClick={onViewDetails}
+          className="w-14 h-14 rounded-xl bg-gray-50 overflow-hidden border border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] font-black text-xl cursor-pointer hover:border-[#1db4ab] transition-all"
+        >
           {org.logo ? (
             <img 
               src={logoUrl} 
@@ -51,7 +54,10 @@ const OrgCard: React.FC<OrgCardProps> = ({ org, onViewDetails }) => {
           )}
         </div>
         <div className="ml-4 flex-grow min-w-0">
-          <h3 className="font-bold text-[#282e3e] text-sm leading-tight group-hover:text-[#1db4ab] transition-colors mb-1">
+          <h3 
+            onClick={onViewDetails}
+            className="font-bold text-[#282e3e] text-sm leading-tight group-hover:text-[#1db4ab] transition-colors mb-1 cursor-pointer hover:underline decoration-[#1db4ab]/30 underline-offset-2"
+          >
             {org.name}
           </h3>
           <div className="flex items-center text-[10px] uppercase font-black tracking-widest text-[#282e3e]/50">

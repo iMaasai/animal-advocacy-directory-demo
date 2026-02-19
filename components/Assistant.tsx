@@ -98,7 +98,7 @@ const Assistant: React.FC<AssistantProps> = ({ organizations }) => {
               <input
                 type="text"
                 placeholder="Ask me anything..."
-                className="w-full px-5 py-3 pr-12 rounded-xl border-2 border-[#e1e9de] focus:outline-none focus:border-[#1db4ab] text-sm font-bold text-[#282e3e]"
+                className="w-full px-5 py-3 pr-12 rounded-xl border-2 border-[#e1e9de] bg-white focus:outline-none focus:border-[#1db4ab] text-sm font-bold text-[#282e3e] placeholder:text-gray-400"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}

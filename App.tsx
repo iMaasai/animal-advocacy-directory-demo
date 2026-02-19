@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -6,12 +5,14 @@ import Sidebar from './components/Sidebar';
 import OrgCard from './components/OrgCard';
 import Footer from './components/Footer';
 import Assistant from './components/Assistant';
+import MapView from './components/MapView';
 import { ShareModal, FeedbackModal, OrgDetailModal, GetListedModal } from './components/Modals';
 import { ORGANISATIONS } from './constants';
 import { FilterState, Organisation } from './types';
 import { SearchX, LayoutGrid } from 'lucide-react';
 
 const App: React.FC = () => {
+  const [currentView, setCurrentView] = useState<'directory' | 'map'>('directory');
   const [filters, setFilters] = useState<FilterState>({
     searchQuery: '',
     regions: [],
@@ -50,6 +51,13 @@ const App: React.FC = () => {
     } else {
       setFilters(prev => ({ ...prev, searchQuery: q }));
     }
+    setCurrentView('directory');
+  };
+
+  const handleCountrySelection = (country: string) => {
+    setFilters(prev => ({ ...prev, regions: [country], searchQuery: '' }));
+    setCurrentView('directory');
+    window.scrollTo({ top: 400, behavior: 'smooth' });
   };
 
   return (
@@ -81,72 +89,84 @@ const App: React.FC = () => {
 
       <Navbar 
         onGetListed={() => setIsGetListedOpen(true)}
+        currentView={currentView}
+        onViewChange={setCurrentView}
       />
       
-      <Hero 
-        searchQuery={filters.searchQuery} 
-        setSearchQuery={(q) => setFilters(prev => ({ ...prev, searchQuery: q }))} 
-        onQuickFilter={handleQuickFilter}
-      />
-
-      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
-          <Sidebar 
-            filters={filters} 
-            onFilterChange={setFilters} 
+      {currentView === 'directory' ? (
+        <>
+          <Hero 
+            searchQuery={filters.searchQuery} 
+            setSearchQuery={(q) => setFilters(prev => ({ ...prev, searchQuery: q }))} 
+            onQuickFilter={handleQuickFilter}
           />
 
-          <div className="flex-grow">
-            <div className="flex items-center justify-between mb-8 border-b border-[#e1e9de] pb-6">
-              <div className="flex items-center">
-                <LayoutGrid className="w-5 h-5 text-[#282e3e]/20 mr-2" />
-                <h2 className="text-xl font-bold text-[#282e3e]">
-                  Found <span className="text-[#1db4ab]">{filteredOrgs.length}</span> Results
-                </h2>
-              </div>
-              
-              <div className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-[#282e3e]/30">
-                <span>Sort by:</span>
-                <select className="bg-transparent border-0 focus:ring-0 text-[#1db4ab] font-black cursor-pointer uppercase">
-                  <option>Featured</option>
-                  <option>Newest</option>
-                  <option>A-Z</option>
-                </select>
+          <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+              <Sidebar 
+                filters={filters} 
+                onFilterChange={setFilters} 
+              />
+
+              <div className="flex-grow">
+                <div className="flex items-center justify-between mb-8 border-b border-[#e1e9de] pb-6">
+                  <div className="flex items-center">
+                    <LayoutGrid className="w-5 h-5 text-[#282e3e]/20 mr-2" />
+                    <h2 className="text-xl font-bold text-[#282e3e]">
+                      Found <span className="text-[#1db4ab]">{filteredOrgs.length}</span> Results
+                    </h2>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-[#282e3e]/30">
+                    <span>Sort by:</span>
+                    <select className="bg-transparent border-0 focus:ring-0 text-[#1db4ab] font-black cursor-pointer uppercase">
+                      <option>Featured</option>
+                      <option>Newest</option>
+                      <option>A-Z</option>
+                    </select>
+                  </div>
+                </div>
+
+                {filteredOrgs.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+                    {filteredOrgs.map((org) => (
+                      <OrgCard 
+                        key={org.id} 
+                        org={org} 
+                        onViewDetails={() => setSelectedOrg(org)}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-white rounded-3xl border-2 border-dashed border-[#e1e9de] py-20 px-10 text-center">
+                    <div className="w-20 h-20 bg-[#e1e9de]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <SearchX className="w-10 h-10 text-[#282e3e]/10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#282e3e] mb-2">No matching organisations</h3>
+                    <p className="text-[#282e3e]/50 max-sm mx-auto font-medium">
+                      We couldn't find any results matching your filters. Try adjusting your search or resetting filters.
+                    </p>
+                    <button 
+                      onClick={() => setFilters({ searchQuery: '', regions: [], foci: [], species: [] })}
+                      className="mt-8 px-8 py-3 bg-[#282e3e] text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#1db4ab] transition-all"
+                    >
+                      Reset All Filters
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
+          </main>
+        </>
+      ) : (
+        <MapView 
+          organisations={ORGANISATIONS} 
+          onBackToDirectory={() => setCurrentView('directory')}
+          onSelectCountry={handleCountrySelection}
+        />
+      )}
 
-            {filteredOrgs.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
-                {filteredOrgs.map((org) => (
-                  <OrgCard 
-                    key={org.id} 
-                    org={org} 
-                    onViewDetails={() => setSelectedOrg(org)}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="bg-white rounded-3xl border-2 border-dashed border-[#e1e9de] py-20 px-10 text-center">
-                <div className="w-20 h-20 bg-[#e1e9de]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <SearchX className="w-10 h-10 text-[#282e3e]/10" />
-                </div>
-                <h3 className="text-xl font-bold text-[#282e3e] mb-2">No matching organisations</h3>
-                <p className="text-[#282e3e]/50 max-sm mx-auto font-medium">
-                  We couldn't find any results matching your filters. Try adjusting your search or resetting filters.
-                </p>
-                <button 
-                  onClick={() => setFilters({ searchQuery: '', regions: [], foci: [], species: [] })}
-                  className="mt-8 px-8 py-3 bg-[#282e3e] text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#1db4ab] transition-all"
-                >
-                  Reset All Filters
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </main>
-
-      <Footer />
+      <Footer onJoinDirectory={() => setIsGetListedOpen(true)} />
       <Assistant organizations={ORGANISATIONS as any} />
 
       <ShareModal 
