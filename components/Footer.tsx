@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Globe, Mail, Twitter } from 'lucide-react';
+import { Heart, Linkedin, Mail, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -11,12 +11,34 @@ const Footer: React.FC = () => {
               <span className="text-white uppercase text-sm font-black tracking-[0.2em]">Farmed Animal Advocacy Directory</span>
             </h2>
             <p className="text-[#e1e9de]/60 mb-6 max-w-md leading-relaxed font-medium">
-              An initiative supported by partners like Animal Advocacy Africa to map and connect the movement across the continent. Together, we can build a more compassionate future.
+              An initiative supported by Animal Advocacy Africa to map and connect the movement across the continent. Together, we can build a more compassionate future.
             </p>
             <div className="flex space-x-5">
-              <a href="#" className="text-[#e1e9de]/40 hover:text-[#1db4ab] transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-[#e1e9de]/40 hover:text-[#1db4ab] transition-colors"><Globe className="w-5 h-5" /></a>
-              <a href="#" className="text-[#e1e9de]/40 hover:text-[#1db4ab] transition-colors"><Mail className="w-5 h-5" /></a>
+              <a 
+                href="https://twitter.com/imaasai" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[#e1e9de]/40 hover:text-[#1db4ab] transition-colors"
+                title="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://linkedin.com/in/looremeta" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[#e1e9de]/40 hover:text-[#1db4ab] transition-colors"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href="mailto:ilooremeta@gmail.com" 
+                className="text-[#e1e9de]/40 hover:text-[#1db4ab] transition-colors"
+                title="Email"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
             </div>
           </div>
           
