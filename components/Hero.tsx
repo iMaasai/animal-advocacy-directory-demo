@@ -38,7 +38,7 @@ const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, onQuickFilter 
           <input
             type="text"
             className="block w-full pl-14 pr-4 py-5 bg-white border-2 border-transparent rounded-full shadow-2xl shadow-black/20 text-[#282e3e] text-base focus:ring-0 focus:border-[#1db4ab] focus:outline-none transition-all placeholder:text-gray-400 font-medium"
-            placeholder="Search by name, country or intervention..."
+            placeholder="Search by organisation name, animal species, or country"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

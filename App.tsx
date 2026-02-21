@@ -30,7 +30,7 @@ const App: React.FC = () => {
     return ORGANISATIONS.filter(org => {
       const matchesSearch = org.name.toLowerCase().includes(filters.searchQuery.toLowerCase()) ||
                             org.country.toLowerCase().includes(filters.searchQuery.toLowerCase()) ||
-                            org.focus.some(f => f.toLowerCase().includes(filters.searchQuery.toLowerCase()));
+                            org.species.some(s => s.toLowerCase().includes(filters.searchQuery.toLowerCase()));
       
       const matchesRegion = filters.regions.length === 0 || filters.regions.some(r => org.country.includes(r));
       
@@ -113,7 +113,7 @@ const App: React.FC = () => {
                 <div className="mb-8 p-4 bg-[#e1e9de]/30 border border-[#e1e9de] rounded-2xl flex items-start gap-3">
                   <Info className="w-4 h-4 text-[#1db4ab] mt-0.5 shrink-0" />
                   <p className="text-[11px] font-medium text-[#282e3e]/70 leading-relaxed">
-                    <span className="font-black text-[#282e3e] uppercase tracking-wider mr-1">Disclaimer:</span>
+                    <span className="font-black text-[#282e3e] uppercase tracking-wider mr-1">DISCLAIMER:</span>
                     This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa.
                   </p>
                 </div>

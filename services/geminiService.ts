@@ -3,8 +3,8 @@ import { Organisation } from '../types';
 
 // Fix: Use Organisation type instead of any for better type safety
 export async function getAIInsights(query: string, orgs: Organisation[]) {
-  // Fix: Always use process.env.API_KEY directly when initializing the GoogleGenAI client
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // Fix: Use process.env.GEMINI_API_KEY as per system guidelines
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   
   const systemInstruction = `
     You are an expert consultant for the Farmed Animal Advocacy Directory. 

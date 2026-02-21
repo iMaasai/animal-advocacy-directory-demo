@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Map as MapIcon } from 'lucide-react';
+import { PlusSquare, Map, LayoutGrid } from 'lucide-react';
 
 interface NavbarProps {
   onGetListed: () => void;
@@ -8,49 +8,46 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onGetListed, currentView, onViewChange }) => {
-  const buttonBaseClass = "flex items-center px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all transform hover:-translate-y-0.5 shadow-lg";
-  
   return (
-    <nav className="sticky top-0 z-50 bg-[#282e3e] border-b border-white/5 shadow-lg">
+    <nav className="sticky top-0 z-50 bg-[#282e3e] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 sm:h-20">
-          <div className="flex items-center gap-8">
-            <div 
-              className="flex items-center cursor-pointer group" 
+          <div className="flex items-center">
+            <button 
               onClick={() => onViewChange('directory')}
+              className="text-sm sm:text-base font-black tracking-tight flex items-center hover:opacity-80 transition-opacity"
             >
-              <span className="text-lg sm:text-xl font-black tracking-tight text-white flex items-center gap-1">
-                <span className="text-white group-hover:text-[#1db4ab] transition-colors">Farmed</span>
-                <span className="text-[#1db4ab]">Animal</span>
-                <span className="text-[#b2a942]">Advocacy</span>
-                <span className="ml-1 uppercase text-[10px] sm:text-xs font-bold tracking-[0.1em] text-white/40">Directory</span>
-              </span>
-            </div>
+              <span className="text-white">Farmed</span>
+              <span className="text-[#1db4ab] ml-1">Animal</span>
+              <span className="text-[#b2a942] ml-1">Advocacy</span>
+              <span className="uppercase text-[10px] font-bold tracking-[0.1em] text-white/40 ml-2">Directory</span>
+            </button>
           </div>
           
-          <div className="flex items-center gap-3">
-            {/* Movement Map Navigation */}
+          <div className="flex items-center space-x-3">
             <button 
-              onClick={() => onViewChange('map')}
-              className={`${buttonBaseClass} ${
-                currentView === 'map' 
-                ? 'bg-[#1db4ab] text-white border border-[#1db4ab] shadow-teal-950/20' 
-                : 'bg-white/5 text-white border border-white/10 hover:bg-[#1db4ab] hover:border-[#1db4ab]'
-              }`}
+              onClick={() => onViewChange(currentView === 'directory' ? 'map' : 'directory')}
+              className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all"
             >
-              <MapIcon className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Movement Map</span>
-              <span className="sm:hidden">Map</span>
+              {currentView === 'directory' ? (
+                <>
+                  <Map className="w-3.5 h-3.5 mr-2 text-[#1db4ab]" />
+                  Movement Map
+                </>
+              ) : (
+                <>
+                  <LayoutGrid className="w-3.5 h-3.5 mr-2 text-[#1db4ab]" />
+                  Directory
+                </>
+              )}
             </button>
 
-            {/* Get Listed Navigation */}
             <button 
               onClick={onGetListed}
-              className={`${buttonBaseClass} bg-white/5 text-white border border-white/10 hover:bg-[#1db4ab] hover:border-[#1db4ab] shadow-teal-950/20`}
+              className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all"
             >
-              <Globe className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Get Listed</span>
-              <span className="sm:hidden">Join</span>
+              <PlusSquare className="w-3.5 h-3.5 mr-2 text-[#1db4ab]" />
+              Get Listed
             </button>
           </div>
         </div>

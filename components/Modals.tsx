@@ -1,6 +1,5 @@
-
-import React, { useState, useMemo } from 'react';
-import { X, Copy, Check, Send, Loader2, MessageSquareHeart, Layout, MapPin, Globe, Instagram, Mail, Building2, Briefcase, Footprints, Facebook, Linkedin, Twitter, Share2, ClipboardList, ExternalLink, FileText, Sparkles, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Copy, Check, Send, Loader2, MessageSquareHeart, Layout, MapPin, Globe, Instagram, Mail, Building2, Briefcase, Footprints, Facebook, Linkedin, Twitter, Share2, ClipboardList, ExternalLink, FileText } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 import { Organisation } from '../types';
 import { getDirectDriveUrl, ORGANISATIONS } from '../constants';
@@ -16,7 +15,7 @@ interface OrgDetailModalProps {
   org: Organisation | null;
   isOpen: boolean;
   onClose: () => void;
-  onSelectOrg?: (org: Organisation) => void;
+  onSelectOrg: (org: Organisation) => void;
 }
 
 export const GetListedModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
@@ -31,7 +30,8 @@ export const GetListedModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         
         <button 
           onClick={onClose} 
-          className="absolute top-8 right-8 p-2 text-[#282e3e]/30 hover:text-[#282e3e] hover:bg-white/50 rounded-full transition-all"
+          className="absolute top-6 right-6 p-3 text-[#282e3e]/40 hover:text-[#282e3e] hover:bg-white/80 rounded-full transition-all z-20"
+          aria-label="Close modal"
         >
           <X className="w-6 h-6" />
         </button>
@@ -48,9 +48,9 @@ export const GetListedModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                 <FileText className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-[#282e3e] text-xs uppercase tracking-wider mb-1">Curation Process</h4>
+                <h4 className="font-bold text-[#282e3e] text-xs uppercase tracking-wider mb-1">Submission Process</h4>
                 <p className="text-xs text-[#282e3e]/60 font-medium leading-relaxed">
-                  We manually review all submissions to maintain the highest quality for our movement partners.
+                  We will check and add submissions as they come in.
                 </p>
               </div>
             </div>
@@ -111,46 +111,41 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
   const logoUrl = getDirectDriveUrl(org.logo);
   const countries = org.country.split(',').map(c => c.trim()).sort();
 
-  // Find similar organisations
-  const similarOrgs = useMemo(() => {
-    if (!org) return [];
-    
-    return ORGANISATIONS
-      .filter(o => o.id !== org.id)
-      .map(o => {
-        let score = 0;
-        // Shared Focus
-        const sharedFocus = o.focus.filter(f => org.focus.includes(f));
-        score += sharedFocus.length * 5;
-        
-        // Shared Species
-        const sharedSpecies = o.species.filter(s => org.species.includes(s));
-        score += sharedSpecies.length * 3;
-        
-        // Same main country
-        if (o.country.includes(org.country.split(',')[0])) {
-          score += 2;
-        }
-
-        return { org: o, score };
-      })
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 3)
-      .map(item => item.org);
-  }, [org]);
+  const similarOrgs = ORGANISATIONS
+    .filter(o => o.id !== org.id)
+    .map(o => {
+      const sharedFocus = o.focus.filter(f => org.focus.includes(f)).length;
+      const sharedSpecies = o.species.filter(s => org.species.includes(s)).length;
+      
+      const orgCountries = org.country.split(',').map(c => c.trim().toLowerCase());
+      const oCountries = o.country.split(',').map(c => c.trim().toLowerCase());
+      
+      // Pan-African matches everything
+      const isPanAfrican = orgCountries.includes('pan-african') || oCountries.includes('pan-african');
+      const sharedCountry = isPanAfrican || oCountries.some(c => orgCountries.includes(c)) ? 1 : 0;
+      
+      return { 
+        org: o, 
+        score: (sharedFocus * 8) + (sharedSpecies * 5) + (sharedCountry * 10) 
+      };
+    })
+    .filter(item => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(item => item.org);
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
       <div className="fixed inset-0 bg-[#282e3e]/80 backdrop-blur-md transition-opacity" onClick={onClose} />
       
-      <div className="bg-white rounded-[2rem] w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl flex flex-col border border-[#e1e9de] animate-in fade-in slide-in-from-bottom-4 duration-300">
+      <div className="bg-white rounded-[2rem] w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl flex flex-col border border-[#e1e9de]">
         {/* Header Section */}
         <div className="bg-[#fcfdfc] border-b border-[#e1e9de] p-6 sm:p-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 relative">
           <button onClick={onClose} className="absolute top-6 right-6 p-2 text-[#282e3e]/30 hover:text-[#282e3e] hover:bg-[#e1e9de]/30 rounded-full transition-all">
             <X className="w-6 h-6" />
           </button>
 
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-white border-2 border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] overflow-hidden shadow-sm transition-transform duration-500 hover:scale-105">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-white border-2 border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] overflow-hidden shadow-sm">
             {org.logo ? (
               <img 
                 src={logoUrl} 
@@ -172,11 +167,6 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
           <div className="text-center sm:text-left flex-grow">
             <h2 className="text-2xl sm:text-3xl font-black text-[#282e3e] leading-tight mb-2 tracking-tight">{org.name}</h2>
             <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-[#282e3e]/40">
-              <span className="flex items-center text-[#1db4ab]">
-                <MapPin className="w-3.5 h-3.5 mr-1.5" />
-                Regional Coverage
-              </span>
-              <span className="text-[#282e3e]/30">•</span>
               {org.address ? (
                 <a 
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(org.address)}`}
@@ -185,18 +175,18 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                   className="hover:text-[#1db4ab] transition-colors flex items-center gap-1.5 group"
                 >
                   <Building2 className="w-3.5 h-3.5 text-[#282e3e]/20 group-hover:text-[#1db4ab] transition-colors" />
-                  <span>Registered HQ: {org.address}</span>
+                  <span className="uppercase">Registered HQ: {org.address}</span>
                   <ExternalLink className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ) : (
-                <span>Registered HQ: Not Specified</span>
+                <span className="uppercase">Registered HQ: Not Specified</span>
               )}
             </div>
           </div>
         </div>
 
         {/* Content Section */}
-        <div className="flex-grow overflow-y-auto p-6 sm:p-10 space-y-12">
+        <div className="flex-grow overflow-y-auto p-6 sm:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             
             {/* Left Column: Contact & Regions */}
@@ -267,50 +257,47 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                 </div>
               </div>
             </div>
+
           </div>
 
           {/* Similar Organisations Section */}
           {similarOrgs.length > 0 && (
-            <div className="pt-10 border-t border-[#e1e9de]">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-[#1db4ab]/10 rounded-lg text-[#1db4ab]">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                  <h3 className="text-sm font-black text-[#282e3e] uppercase tracking-wider">Similar Organisations</h3>
+            <div className="mt-16 pt-10 border-t border-[#e1e9de]">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h3 className="text-[10px] font-black text-[#282e3e]/40 uppercase tracking-[0.25em] mb-1">Network Discovery</h3>
+                  <h4 className="serif-font text-xl font-black text-[#282e3e]">Similar Organisations</h4>
                 </div>
-                <p className="text-[10px] font-black text-[#282e3e]/30 uppercase tracking-[0.1em]">Found via shared focus areas</p>
+                <div className="hidden sm:flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#1db4ab]">
+                  <span>Based on Focus & Region</span>
+                  <div className="w-8 h-[1px] bg-[#1db4ab]/30" />
+                </div>
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {similarOrgs.map((similar) => {
-                  const similarLogo = getDirectDriveUrl(similar.logo);
-                  return (
-                    <button
-                      key={similar.id}
-                      onClick={() => onSelectOrg?.(similar)}
-                      className="group text-left p-4 bg-[#fcfdfc] border-2 border-[#e1e9de] rounded-2xl hover:border-[#1db4ab] hover:bg-white transition-all flex items-center gap-4"
-                    >
-                      <div className="w-12 h-12 bg-white border border-[#e1e9de] rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden">
-                        {similar.logo ? (
-                          <img src={similarLogo} alt="" className="w-full h-full object-contain p-2" />
-                        ) : (
-                          <span className="text-lg font-black text-[#1db4ab]">{similar.name.charAt(0)}</span>
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <h4 className="text-xs font-bold text-[#282e3e] truncate group-hover:text-[#1db4ab] transition-colors">
-                          {similar.name}
-                        </h4>
-                        <div className="flex items-center text-[9px] font-black uppercase tracking-widest text-[#282e3e]/40 mt-1">
-                          <MapPin className="w-2.5 h-2.5 mr-1" />
-                          <span className="truncate">{similar.country.split(',')[0]}</span>
-                        </div>
-                      </div>
-                      <ChevronRight className="w-4 h-4 ml-auto text-[#282e3e]/10 group-hover:text-[#1db4ab] transition-all" />
-                    </button>
-                  );
-                })}
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {similarOrgs.map((sOrg) => (
+                  <button 
+                    key={sOrg.id}
+                    onClick={() => onSelectOrg(sOrg)}
+                    className="group flex items-center p-4 bg-[#fcfdfc] border border-[#e1e9de] rounded-2xl hover:border-[#1db4ab] hover:shadow-lg hover:shadow-[#1db4ab]/5 transition-all text-left"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-white border border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] overflow-hidden group-hover:border-[#1db4ab]/30 transition-colors">
+                      {sOrg.logo ? (
+                        <img 
+                          src={getDirectDriveUrl(sOrg.logo)} 
+                          alt={sOrg.name} 
+                          className="w-full h-full object-contain p-2"
+                        />
+                      ) : (
+                        <span className="font-black text-lg">{sOrg.name.charAt(0)}</span>
+                      )}
+                    </div>
+                    <div className="ml-4 min-w-0">
+                      <p className="text-xs font-black text-[#282e3e] truncate group-hover:text-[#1db4ab] transition-colors">{sOrg.name}</p>
+                      <p className="text-[9px] font-bold text-[#282e3e]/40 uppercase tracking-wider truncate">{sOrg.country}</p>
+                    </div>
+                  </button>
+                ))}
               </div>
             </div>
           )}

@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { MapPin, Info, Sparkles, Map, Users, ChevronRight, LayoutGrid, Loader2, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
-import * as d3 from 'https://esm.sh/d3-geo@3';
+import * as d3 from 'd3-geo';
 import { Organisation } from '../types';
 
 interface MapViewProps {
@@ -220,7 +220,7 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
                 <h3 className="text-sm font-black text-[#282e3e] uppercase tracking-wider">Top Regions</h3>
              </div>
              <div className="space-y-3">
-                {Object.entries(stats.countryCounts)
+                {(Object.entries(stats.countryCounts) as [string, { count: number; orgs: string[] }][])
                   .sort((a, b) => b[1].count - a[1].count)
                   .slice(0, 5)
                   .map(([name, data], idx) => (

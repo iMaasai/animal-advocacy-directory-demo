@@ -32,7 +32,7 @@ const Assistant: React.FC<AssistantProps> = ({ organizations }) => {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-[#7970af] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group"
+        className="fixed bottom-24 right-6 w-16 h-16 bg-[#7970af] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group"
       >
         <Sparkles className="w-8 h-8 group-hover:animate-pulse" />
       </button>
@@ -98,7 +98,7 @@ const Assistant: React.FC<AssistantProps> = ({ organizations }) => {
               <input
                 type="text"
                 placeholder="Ask me anything..."
-                className="w-full px-5 py-3 pr-12 rounded-xl border-2 border-[#e1e9de] bg-white focus:outline-none focus:border-[#1db4ab] text-sm font-bold text-[#282e3e] placeholder:text-gray-400"
+                className="w-full px-5 py-3 pr-12 rounded-xl border-2 border-[#e1e9de] focus:outline-none focus:border-[#1db4ab] text-sm font-bold text-[#282e3e]"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
