@@ -175,7 +175,7 @@ const App: React.FC = () => {
           onSelectCountry={handleCountrySelection}
         />
       )}
-
+      <Analytics />
       <Footer onJoinDirectory={() => setIsGetListedOpen(true)} />
       <Assistant organizations={ORGANISATIONS as any} />
 
