@@ -10,7 +10,7 @@ import { ShareModal, FeedbackModal, OrgDetailModal, GetListedModal } from './com
 import { ORGANISATIONS } from './constants';
 import { FilterState, Organisation } from './types';
 import { SearchX, LayoutGrid, Info } from 'lucide-react';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'directory' | 'map'>('directory');
