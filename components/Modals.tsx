@@ -119,13 +119,20 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
       const orgCountries = org.country.split(',').map(c => c.trim().toLowerCase());
       const oCountries = o.country.split(',').map(c => c.trim().toLowerCase());
       
-      // Pan-African matches everything
       const isPanAfrican = orgCountries.includes('pan-african') || oCountries.includes('pan-african');
-      const sharedCountry = isPanAfrican || oCountries.some(c => orgCountries.includes(c)) ? 1 : 0;
+      const sharedCountryCount = oCountries.filter(c => orgCountries.includes(c)).length;
+      
+      // 5 points per specifically shared country. 
+      // If no specific match but one is Pan-African, give a base overlap score of 5.
+      let countryScore = sharedCountryCount * 5;
+      if (countryScore === 0 && isPanAfrican) {
+        countryScore = 5;
+      }
       
       return { 
         org: o, 
-        score: (sharedFocus * 8) + (sharedSpecies * 5) + (sharedCountry * 10) 
+        // Focus prioritized less than Species (10 points). 
+        score: (sharedSpecies * 10) + (sharedFocus * 5) + countryScore 
       };
     })
     .filter(item => item.score > 0)
@@ -269,7 +276,7 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                   <h4 className="serif-font text-xl font-black text-[#282e3e]">Similar Organisations</h4>
                 </div>
                 <div className="hidden sm:flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#1db4ab]">
-                  <span>Based on Focus & Region</span>
+                  <span>Based on Species, Focus & Region</span>
                   <div className="w-8 h-[1px] bg-[#1db4ab]/30" />
                 </div>
               </div>
