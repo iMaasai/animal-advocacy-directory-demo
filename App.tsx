@@ -47,7 +47,7 @@ const App: React.FC = () => {
   }, [filters]);
 
   const handleQuickFilter = (q: string) => {
-    if (["Ghana", "Uganda", "Benin", "Angola", "Nigeria", "South Africa"].includes(q)) {
+    if (["Ghana", "Uganda", "Benin", "Angola", "Kenya", "Nigeria", "South Africa"].includes(q)) {
       setFilters(prev => ({ ...prev, regions: [q] }));
     } else {
       setFilters(prev => ({ ...prev, searchQuery: q }));

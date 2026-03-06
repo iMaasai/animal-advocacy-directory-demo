@@ -528,6 +528,138 @@ export const ORGANISATIONS: Organisation[] = [
     website: '',
     species: ['Cross-species advocacy'],
     focus: ['Alternative proteins & food system innovation', 'Corporate & institutional engagement', 'Public & consumer outreach', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'proveg-nigeria',
+    name: 'ProVeg Nigeria',
+    logo: 'https://drive.google.com/open?id=1CLPpdJLSEDBT5CdUMp71rHcRwHOwleW8',
+    address: '207A Corporation Drive, Ikoyi, Lagos, Nigeria',
+    country: 'Nigeria',
+    email: 'info.nigeria@proveg.org',
+    social: 'https://x.com/ProVegNG',
+    website: 'https://proveg.org/ng',
+    species: ['Cross-species advocacy'],
+    focus: ['Alternative proteins & food system innovation', 'Corporate & institutional engagement', 'Movement & capacity building', 'Policy & legal advocacy', 'Public & consumer outreach', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'avac-uganda',
+    name: 'Action for Veganism and Climate',
+    logo: 'https://drive.google.com/open?id=1ySFMFmzmVNkUqE9DenhRCNyySs4pHqgG',
+    address: 'Entebbe',
+    country: 'Uganda',
+    email: 'Info@avacuganda.org',
+    social: 'https://www.linkedin.com/company/action-for-veganism-and-climate/',
+    website: 'https://avacuganda.org/',
+    species: ['Insects', 'Cross-species advocacy'],
+    focus: ['Corporate & institutional engagement', 'Policy & legal advocacy', 'Public & consumer outreach', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'umunthu',
+    name: 'Umunthu Pets, Livestock and Wildlife Welfare Society',
+    logo: 'https://drive.google.com/open?id=1mL0e3qFjHUY0PQhD1OA434c6X1Wx6rGe',
+    address: 'Nyunge, Karonga, Malawi',
+    country: 'Malawi',
+    email: 'umunthuanimalwelfare@gmail.com',
+    social: 'https://web.facebook.com/profile.php?id=100086064025374',
+    website: '',
+    species: ['Large ruminants', 'Other farmed mammals', 'Pigs', 'Small ruminants'],
+    focus: ['Direct animal assistance', 'Movement & capacity building', 'Public & consumer outreach', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'humane-world-sa',
+    name: 'Humane World for Animals South Africa',
+    logo: '',
+    address: '1255 23rd Street, NW, Suite 450, Washington, DC 20037',
+    country: 'South Africa',
+    email: 'anqoko@humaneworld.org',
+    social: 'https://www.instagram.com/humaneworldforanimals',
+    website: 'https://humaneworld.org',
+    species: ['Cross-species advocacy'],
+    focus: ['Policy & legal advocacy', 'Public & consumer outreach']
+  },
+  {
+    id: 'lspca',
+    name: 'Lilongwe Society for the Protection and Care of Animals (LSPCA)',
+    logo: 'https://drive.google.com/open?id=1xE5cN8AilF9DUlp7ou-5tR9NJBxYyniJ',
+    address: 'Plot number 100, Area 28, Lilongwe, Malawi',
+    country: 'Malawi',
+    email: 'info@lilongwespca.org',
+    social: 'https://www.facebook.com/LSPCA/',
+    website: 'https://lilongwespca.org/',
+    species: ['Chickens', 'Large ruminants', 'Pigs', 'Small ruminants'],
+    focus: ['Direct animal assistance', 'Policy & legal advocacy']
+  },
+  {
+    id: 'awash',
+    name: 'AWASH',
+    logo: 'https://drive.google.com/open?id=17FcH5TDPcR8sGhPRAIdRfb35R6Cd0j53',
+    address: '',
+    country: 'Ghana',
+    email: 'info@awash-charity.org',
+    social: 'https://www.linkedin.com/company/108968228/',
+    website: 'https://awash-charity.org/',
+    species: ['Farmed finfish'],
+    focus: ['Corporate & institutional engagement', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'awecca',
+    name: 'Animal Welfare Competence Center for Africa',
+    logo: 'https://drive.google.com/open?id=1dBLyBFIeLf-K-8yYPpynBht_zOYOZEQV',
+    address: 'Livingstone Drive, P.O Box 7062, COVAB, Makerere University',
+    country: 'Uganda',
+    email: 'pssuna@awecca.org',
+    social: 'https://www.linkedin.com/in/ssuna-paul-99562a87/',
+    website: 'https://www.awecca.org',
+    species: ['Cross-species advocacy'],
+    focus: ['Policy & legal advocacy', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'uganda-vegan',
+    name: 'Uganda Vegan Society',
+    logo: 'https://drive.google.com/open?id=1JgGVW87GYu5fw6H-MGRp-jCdrC4c0NpQ',
+    address: 'Kampala, Uganda',
+    country: 'Uganda',
+    email: 'info@ugandavegansociety.org',
+    social: 'https://www.linkedin.com/company/100349740/',
+    website: 'https://ugandavegansociety.org/',
+    species: ['Chickens', 'Farmed finfish', 'Large ruminants', 'Pigs', 'Small ruminants', 'Cross-species advocacy'],
+    focus: ['Alternative proteins & food system innovation', 'Corporate & institutional engagement', 'Movement & capacity building', 'Public & consumer outreach']
+  },
+  {
+    id: 'wacpaw',
+    name: 'West Africa Centre for the Protection of Animal Welfare',
+    logo: 'https://drive.google.com/open?id=1pRQnXszijBcjGIEZMOv0GUT0RosmRRAZ',
+    address: 'GU 63, Gurugu, Main Jisonayili Road, Tamale, Ghana',
+    country: 'Ghana, Uganda',
+    email: 'info@wacpaw.org',
+    social: '',
+    website: 'https://www.wacpaw.org',
+    species: ['Chickens', 'Large ruminants', 'Other farmed mammals', 'Other poultry', 'Pigs', 'Small ruminants', 'Cross-species advocacy'],
+    focus: ['Alternative proteins & food system innovation', 'Direct animal assistance', 'Movement & capacity building', 'Public & consumer outreach', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'ecospace',
+    name: 'Eco Space Foundation Uganda',
+    logo: 'https://drive.google.com/open?id=1VvlhY5k4mz-nZWChwKcCqtr_5zdU4T_-',
+    address: 'Kampala, Bombo Rd Kawempe',
+    country: 'Uganda',
+    email: 'ecospaceug@gmail.com',
+    social: 'https://www.linkedin.com/company/eco-space-foundation/',
+    website: 'https://ecospacefoundation.org/',
+    species: ['Cross-species advocacy'],
+    focus: ['Corporate & institutional engagement', 'Policy & legal advocacy', 'Public & consumer outreach', 'Research, investigation & evidence generation', 'Protest & disruptive activism']
+  },
+  {
+    id: 'vegan-society-kenya',
+    name: 'Vegan Society of Kenya',
+    logo: '',
+    address: '754 Gesora Road, Utawala, Nairobi',
+    country: 'Kenya',
+    email: 'rachel@vegansocietyofkenya.co.ke',
+    social: 'https://web.facebook.com/TheVeganSocietyofKenya',
+    website: 'https://vegansocietyofkenya.co.ke/',
+    species: ['Chickens', 'Crustaceans', 'Farmed finfish', 'Large ruminants', 'Other farmed mammals', 'Other poultry', 'Pigs', 'Small ruminants', 'Cross-species advocacy'],
+    focus: ['Alternative proteins & food system innovation', 'Corporate & institutional engagement', 'Direct animal assistance', 'Movement & capacity building', 'Public & consumer outreach', 'Research, investigation & evidence generation']
   }
 ];
 
