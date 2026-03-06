@@ -149,6 +149,7 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
               <img 
                 src={logoUrl} 
                 alt={`${org.name} logo`} 
+                loading="lazy"
                 className="w-full h-full object-contain p-4" 
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
@@ -285,6 +286,7 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                         <img 
                           src={getDirectDriveUrl(sOrg.logo)} 
                           alt={sOrg.name} 
+                          loading="lazy"
                           className="w-full h-full object-contain p-2"
                         />
                       ) : (

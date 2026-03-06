@@ -40,6 +40,7 @@ const OrgCard: React.FC<OrgCardProps> = ({ org, onViewDetails }) => {
             <img 
               src={logoUrl} 
               alt={`${org.name} logo`} 
+              loading="lazy"
               className="w-full h-full object-contain p-2"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
