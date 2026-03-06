@@ -160,7 +160,25 @@ The custom domain `africafarmedanimals.info` is configured in Vercel's project s
 
 ---
 
-## 📋 Data Disclaimer
+## � Future Improvements
+
+As the directory scales past 100+ organisations, consider the following technical roadmap items to streamline operations and enhance the UI:
+
+### 1. Database Migration
+Currently, organisations are hardcoded in `constants.ts`. Migrating to a Database or Backend-as-a-Service (BaaS) like Supabase or Firebase will make data entry simpler and decouple content updates from code deployments.
+
+### 2. Automated Form Sync
+Since organisations apply via Google Forms, establishing an automated pipeline (e.g., via Zapier or a serverless function) to sync approved spreadsheet rows directly to the database will eliminate manual data entry.
+
+### 3. Dedicated Image Hosting
+Logos are currently served directly from Google Drive share links. Moving these assets to a dedicated CDN/Image host like Cloudinary guarantees long-term reliability against undocumented API changes.
+
+### 4. "Load More" Pagination
+To maintain smooth scrolling and prevent cognitive overload, shift the UI from a single long-scroll page to a "Load More" pagination strategy once the list becomes excessively long.
+
+---
+
+## �📋 Data Disclaimer
 
 This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa.
 
