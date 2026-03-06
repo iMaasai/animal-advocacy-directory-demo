@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Sidebar from './components/Sidebar';
 import OrgCard from './components/OrgCard';
 import Footer from './components/Footer';
-import Assistant from './components/Assistant';
 import MapView from './components/MapView';
 import { ShareModal, FeedbackModal, OrgDetailModal, GetListedModal } from './components/Modals';
 import { ORGANISATIONS } from './constants';
@@ -177,7 +176,6 @@ const App: React.FC = () => {
       )}
       <Analytics />
       <Footer onJoinDirectory={() => setIsGetListedOpen(true)} />
-      <Assistant organizations={ORGANISATIONS as any} />
 
       <ShareModal 
         isOpen={isShareOpen} 

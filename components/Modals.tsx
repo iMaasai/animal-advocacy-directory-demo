@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, Copy, Check, Send, Loader2, MessageSquareHeart, Layout, MapPin, Globe, Instagram, Mail, Building2, Briefcase, Footprints, Facebook, Linkedin, Twitter, Share2, ClipboardList, ExternalLink, FileText } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { Organisation } from '../types';
 import { getDirectDriveUrl, ORGANISATIONS } from '../constants';
 
@@ -382,18 +381,11 @@ export const FeedbackModal: React.FC<ModalProps> = ({ isOpen, onClose, isBluepri
     if (!feedback.trim()) return;
     setLoading(true);
 
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    try {
-      const res = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: `The user provided this feedback on the AAA Directory: "${feedback}". Act as a Lead UI/UX Designer. Briefly thank them and confirm you've received the note for the next sprint. 1 sentence only.`,
-      });
-      setResponse(res.text || "Thank you for your valuable feedback!");
-    } catch (e) {
-      setResponse("Thank you! Your feedback has been logged for review.");
-    } finally {
+    // Simulate network request
+    setTimeout(() => {
+      setResponse("Thank you for your valuable feedback! We've received your note for the next sprint.");
       setLoading(false);
-    }
+    }, 800);
   };
 
   if (!isOpen) return null;
