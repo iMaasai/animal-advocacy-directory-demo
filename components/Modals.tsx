@@ -182,11 +182,11 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                   className="hover:text-[#1db4ab] transition-colors flex items-center gap-1.5 group"
                 >
                   <Building2 className="w-3.5 h-3.5 text-[#282e3e]/20 group-hover:text-[#1db4ab] transition-colors" />
-                  <span className="uppercase">Registered HQ: {org.address}</span>
+                  <span className="uppercase">Address: {org.address}</span>
                   <ExternalLink className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ) : (
-                <span className="uppercase">Registered HQ: Not Specified</span>
+                <span className="uppercase">Address: Not Specified</span>
               )}
             </div>
           </div>
