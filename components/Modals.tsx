@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { track } from '@vercel/analytics/react';
 import { X, Copy, Check, Send, Loader2, MessageSquareHeart, Layout, MapPin, Globe, Instagram, Mail, Building2, Briefcase, Footprints, Facebook, Linkedin, Twitter, Share2, ClipboardList, ExternalLink, FileText } from 'lucide-react';
 import { Organisation } from '../types';
 import { getDirectDriveUrl, ORGANISATIONS } from '../constants';
@@ -71,6 +72,7 @@ export const GetListedModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             href="https://forms.gle/VU78W93JqpMNntEL8" 
             target="_blank" 
             rel="noopener noreferrer"
+            onClick={() => track('Get_Listed_Clicked', { location: 'Modal' })}
             className="w-full py-5 bg-[#1db4ab] text-white rounded-2xl font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 shadow-xl shadow-teal-900/10 hover:bg-[#169d95] transition-all transform hover:-translate-y-1 active:translate-y-0"
           >
             CONTINUE TO APPLICATION
@@ -179,6 +181,7 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(org.address)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => track('Outbound_Link_Clicked', { org_name: org.name, link_type: 'Address' })}
                   className="hover:text-[#1db4ab] transition-colors flex items-center gap-1.5 group"
                 >
                   <Building2 className="w-3.5 h-3.5 text-[#282e3e]/20 group-hover:text-[#1db4ab] transition-colors" />
@@ -213,19 +216,19 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
                 <h3 className="text-[10px] font-black text-[#282e3e]/40 uppercase tracking-[0.25em] mb-4">Contact Details</h3>
                 <div className="space-y-3">
                   {org.website && (
-                    <a href={org.website} target="_blank" rel="noopener noreferrer" className="flex items-center p-3 rounded-xl border border-[#e1e9de] hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all text-sm font-bold text-[#282e3e]/70 group">
+                    <a href={org.website} target="_blank" rel="noopener noreferrer" onClick={() => track('Outbound_Link_Clicked', { org_name: org.name, link_type: 'Website' })} className="flex items-center p-3 rounded-xl border border-[#e1e9de] hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all text-sm font-bold text-[#282e3e]/70 group">
                       <Globe className="w-4 h-4 mr-3 text-[#1db4ab]" />
                       <span className="group-hover:text-[#1db4ab] transition-colors">Official Website</span>
                     </a>
                   )}
                   {org.social && (
-                    <a href={org.social.startsWith('http') ? org.social : `https://${org.social}`} target="_blank" rel="noopener noreferrer" className="flex items-center p-3 rounded-xl border border-[#e1e9de] hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all text-sm font-bold text-[#282e3e]/70 group">
+                    <a href={org.social.startsWith('http') ? org.social : `https://${org.social}`} target="_blank" rel="noopener noreferrer" onClick={() => track('Outbound_Link_Clicked', { org_name: org.name, link_type: getSocialLabel(org.social) })} className="flex items-center p-3 rounded-xl border border-[#e1e9de] hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all text-sm font-bold text-[#282e3e]/70 group">
                       {getSocialIcon(org.social)}
                       <span className="group-hover:text-[#1db4ab] transition-colors">{getSocialLabel(org.social)}</span>
                     </a>
                   )}
                   {org.email && (
-                    <a href={`mailto:${org.email}`} className="flex items-center p-3 rounded-xl border border-[#e1e9de] hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all text-sm font-bold text-[#282e3e]/70 group">
+                    <a href={`mailto:${org.email}`} onClick={() => track('Outbound_Link_Clicked', { org_name: org.name, link_type: 'Email' })} className="flex items-center p-3 rounded-xl border border-[#e1e9de] hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all text-sm font-bold text-[#282e3e]/70 group">
                       <Mail className="w-4 h-4 mr-3 text-[#b2a942]" />
                       <span className="group-hover:text-[#1db4ab] transition-colors truncate">{org.email}</span>
                     </a>

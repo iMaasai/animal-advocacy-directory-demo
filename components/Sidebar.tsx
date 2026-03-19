@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { track } from '@vercel/analytics/react';
 import { REGIONS, FOCI, SPECIES } from '../constants';
 import { FilterState } from '../types';
 import { Filter, Check, ChevronDown, ChevronRight } from 'lucide-react';
@@ -105,7 +105,10 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
           selectedItems={filters.regions} 
           isExpanded={expandedGroups.regions}
           onToggleExpand={() => toggleGroup('regions')}
-          onToggle={(val) => onFilterChange({ ...filters, regions: toggleItem(filters.regions, val) })} 
+          onToggle={(val) => {
+            track('Filter_Used', { category: 'Region', value: val });
+            onFilterChange({ ...filters, regions: toggleItem(filters.regions, val) });
+          }} 
         />
         <div className="h-px bg-[#e1e9de]/50 my-2" />
         <FilterGroup 
@@ -114,7 +117,10 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
           selectedItems={filters.foci} 
           isExpanded={expandedGroups.foci}
           onToggleExpand={() => toggleGroup('foci')}
-          onToggle={(val) => onFilterChange({ ...filters, foci: toggleItem(filters.foci, val) })} 
+          onToggle={(val) => {
+            track('Filter_Used', { category: 'Intervention', value: val });
+            onFilterChange({ ...filters, foci: toggleItem(filters.foci, val) });
+          }} 
         />
         <div className="h-px bg-[#e1e9de]/50 my-2" />
         <FilterGroup 
@@ -123,7 +129,10 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
           selectedItems={filters.species} 
           isExpanded={expandedGroups.species}
           onToggleExpand={() => toggleGroup('species')}
-          onToggle={(val) => onFilterChange({ ...filters, species: toggleItem(filters.species, val) })} 
+          onToggle={(val) => {
+            track('Filter_Used', { category: 'Species', value: val });
+            onFilterChange({ ...filters, species: toggleItem(filters.species, val) });
+          }} 
         />
       </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { track } from '@vercel/analytics/react';
 import { Search } from 'lucide-react';
 
 interface HeroProps {
@@ -50,7 +51,10 @@ const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, onQuickFilter 
             {quickFilters.map((filter) => (
               <button
                 key={filter.name}
-                onClick={() => onQuickFilter(filter.name)}
+                onClick={() => {
+                  track('Filter_Used', { category: 'Quick_Access', value: filter.name });
+                  onQuickFilter(filter.name);
+                }}
                 className="px-5 py-2 bg-white/5 border border-white/20 rounded-full text-[10px] font-black uppercase tracking-widest text-white hover:bg-white hover:text-[#282e3e] hover:border-white transition-all active:scale-95"
               >
                 {filter.name}

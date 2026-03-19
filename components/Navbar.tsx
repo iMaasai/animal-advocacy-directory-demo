@@ -1,4 +1,5 @@
 import React from 'react';
+import { track } from '@vercel/analytics/react';
 import { PlusSquare, Map, LayoutGrid } from 'lucide-react';
 
 interface NavbarProps {
@@ -26,7 +27,11 @@ const Navbar: React.FC<NavbarProps> = ({ onGetListed, currentView, onViewChange 
           
           <div className="flex items-center space-x-3">
             <button 
-              onClick={() => onViewChange(currentView === 'directory' ? 'map' : 'directory')}
+              onClick={() => {
+                const newMode = currentView === 'directory' ? 'map' : 'directory';
+                track('View_Mode_Changed', { mode: newMode });
+                onViewChange(newMode);
+              }}
               className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all"
             >
               {currentView === 'directory' ? (
@@ -43,7 +48,10 @@ const Navbar: React.FC<NavbarProps> = ({ onGetListed, currentView, onViewChange 
             </button>
 
             <button 
-              onClick={onGetListed}
+              onClick={() => {
+                track('Get_Listed_Clicked', { location: 'Navbar' });
+                onGetListed();
+              }}
               className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all"
             >
               <PlusSquare className="w-3.5 h-3.5 mr-2 text-[#1db4ab]" />

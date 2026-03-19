@@ -1,4 +1,5 @@
 import React from 'react';
+import { track } from '@vercel/analytics/react';
 import { Linkedin, Mail, Twitter, Globe, PlusSquare } from 'lucide-react';
 
 interface FooterProps {
@@ -37,7 +38,10 @@ const Footer: React.FC<FooterProps> = ({ onJoinDirectory }) => {
                 </li>
                 <li>
                   <button 
-                    onClick={onJoinDirectory}
+                    onClick={() => {
+                      track('Get_Listed_Clicked', { location: 'Footer' });
+                      onJoinDirectory?.();
+                    }}
                     className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-[#e1e9de]/60 hover:text-[#1db4ab] transition-colors group"
                   >
                     <PlusSquare className="w-4 h-4 text-[#1db4ab]" />

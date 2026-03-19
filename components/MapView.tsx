@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
+import { track } from '@vercel/analytics/react';
 import { MapPin, Info, Sparkles, Map, Users, ChevronRight, LayoutGrid, Loader2, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
 import * as d3 from 'd3-geo';
 import { Organisation } from '../types';
@@ -189,7 +190,12 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
                         className={`${getColorClass(count)} stroke-1 transition-all duration-300 cursor-pointer outline-none`}
                         onMouseEnter={() => setHoveredCountry(countryName)}
                         onMouseLeave={() => setHoveredCountry(null)}
-                        onClick={() => count > 0 && onSelectCountry(countryName)}
+                        onClick={() => {
+                          if (count > 0) {
+                            track('Map_Country_Clicked', { country: countryName });
+                            onSelectCountry(countryName);
+                          }
+                        }}
                       />
                     );
                   })}
@@ -224,7 +230,10 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
                   .sort((a, b) => b[1].count - a[1].count)
                   .slice(0, 5)
                   .map(([name, data], idx) => (
-                    <div key={idx} className="p-4 bg-white border border-[#e1e9de] rounded-2xl flex items-center justify-between group hover:border-[#1db4ab] transition-all cursor-pointer" onClick={() => onSelectCountry(name)}>
+                    <div key={idx} className="p-4 bg-white border border-[#e1e9de] rounded-2xl flex items-center justify-between group hover:border-[#1db4ab] transition-all cursor-pointer" onClick={() => {
+                        track('Map_Country_Clicked', { country: name });
+                        onSelectCountry(name);
+                    }}>
                       <div>
                         <p className="text-[10px] font-black text-[#282e3e]/30 uppercase tracking-widest mb-0.5">{name}</p>
                         <p className="text-sm font-bold text-[#282e3e]">{data.count} Organisations</p>
