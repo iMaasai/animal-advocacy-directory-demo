@@ -176,6 +176,9 @@ Logos are currently served directly from Google Drive share links. Moving these 
 ### 4. "Load More" Pagination
 To maintain smooth scrolling and prevent cognitive overload, shift the UI from a single long-scroll page to a "Load More" pagination strategy once the list becomes excessively long.
 
+### 5. Analytics Upgrades
+The application currently contains dormant event tracking code using `@vercel/analytics` to measure key user interactions (viewing profiles, outbound links, map usage, filtering, etc.). These custom events require a paid Vercel Pro plan to view the dashboard breakdowns. Once the project upgrades its hosting plan, or if the team decides to migrate to a free alternative (e.g., PostHog, Google Analytics), the existing `track()` functions are already instrumented and ready to be connected.
+
 ---
 
 ## �📋 Data Disclaimer
