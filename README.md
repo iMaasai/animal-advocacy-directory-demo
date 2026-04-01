@@ -1,5 +1,7 @@
 # Farmed Animal Advocacy Directory (Africa)
 
+**A collaborative project with [Animal Advocacy Africa](https://www.animaladvocacyafrica.org/)**
+
 A high-fidelity, interactive directory designed to foster collaboration, transparency, and growth within the farmed animal advocacy movement in Africa.
 
 🔗 **Live Site**: [africafarmedanimals.info](https://africafarmedanimals.info/)
@@ -13,7 +15,7 @@ The **Farmed Animal Advocacy Directory** is a centralised hub for discovering an
 - **Interactive Directory**: Browse organisations with high-fidelity cards detailing their focus, species, and location.
 - **Advanced Filtering**: Filter by Region/Country, Interventions (Programmes), and Animal Species.
 - **Movement Map**: A visual representation of organisational footprints across Africa using an interactive SVG map.
-- **Smart Recommendations**: An intelligent "Similar Organisations" algorithm that prioritises shared interventions and species.
+- **Weighted Recommendations**: A discovery algorithm that prioritises "Similar Organisations" based on shared interventions, species, and regional overlap.
 - **Responsive Design**: Fully optimised for desktop, tablet, and mobile devices.
 - **Blueprint Mode**: A unique "Blueprint" visual mode for a technical, high-contrast viewing experience.
 
@@ -37,12 +39,14 @@ The **Farmed Animal Advocacy Directory** is a centralised hub for discovering an
 │   ├── OrgCard.tsx      # Organisation card with logo, tags, and links
 │   ├── MapView.tsx      # Interactive SVG map of Africa
 │   ├── Modals.tsx       # Share, Feedback, Org Detail, and Get Listed modals
-│   └── Footer.tsx       # Footer with links & disclaimer
+│   └── Footer.tsx       # Footer with branding, links & disclaimer
+├── public/              # Static assets (favicons, logos, manifests)
 ├── types.ts             # Global TypeScript definitions (Organisation, FilterState)
 ├── constants.ts         # Organisation data, filter options, brand colours
 ├── App.tsx              # Main application logic, state, and view routing
 ├── index.tsx            # React DOM entry point
-├── index.html           # HTML shell with Tailwind CDN and font imports
+├── index.html           # HTML shell with tailwind configuration and font imports
+├── index.css            # Global styles and custom component rules
 ├── vite.config.ts       # Vite configuration
 ├── metadata.json        # Application metadata and permissions
 └── package.json         # Dependencies and scripts
