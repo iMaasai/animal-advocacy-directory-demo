@@ -12,12 +12,31 @@ const Footer: React.FC<FooterProps> = ({ onJoinDirectory }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           <div>
-            <h2 className="text-sm font-bold text-offwhite uppercase tracking-[0.2em] mb-8">
+            <h2 className="text-sm font-bold text-offwhite uppercase tracking-[0.2em] mb-2">
               <span className="text-brandpurple">Farmed</span> Animal Advocacy Directory
             </h2>
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-offwhite/40 mb-8 flex items-center gap-2">
+              <span>A collaborative project with</span>
+              <a 
+                href="https://www.animaladvocacyaafrica.org/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-brandteal hover:text-offwhite transition-colors underline decoration-brandteal/30 underline-offset-4"
+              >
+                Animal Advocacy Africa
+              </a>
+            </p>
             <p className="text-offwhite/60 max-w-md leading-relaxed font-medium text-sm">
               <span className="font-bold text-offwhite uppercase tracking-wider mr-1">DISCLAIMER:</span>
-              This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa.
+              This directory is a community resource. Data is self-reported by listed organisations and not independently verified by {' '}
+              <a 
+                href="https://www.animaladvocacyaafrica.org/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-offwhite hover:text-brandteal transition-colors underline decoration-white/20 underline-offset-4"
+              >
+                Animal Advocacy Africa
+              </a>.
             </p>
           </div>
           
