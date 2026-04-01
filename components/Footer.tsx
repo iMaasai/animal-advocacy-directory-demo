@@ -18,7 +18,7 @@ const Footer: React.FC<FooterProps> = ({ onJoinDirectory }) => {
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-offwhite/40 mb-8 flex items-center gap-2">
               <span>A collaborative project with</span>
               <a 
-                href="https://www.animaladvocacyaafrica.org/" 
+                href="https://www.animaladvocacyafrica.org/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-brandteal hover:text-offwhite transition-colors underline decoration-brandteal/30 underline-offset-4"
@@ -28,15 +28,7 @@ const Footer: React.FC<FooterProps> = ({ onJoinDirectory }) => {
             </p>
             <p className="text-offwhite/60 max-w-md leading-relaxed font-medium text-sm">
               <span className="font-bold text-offwhite uppercase tracking-wider mr-1">DISCLAIMER:</span>
-              This directory is a community resource. Data is self-reported by listed organisations and not independently verified by {' '}
-              <a 
-                href="https://www.animaladvocacyaafrica.org/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-offwhite hover:text-brandteal transition-colors underline decoration-white/20 underline-offset-4"
-              >
-                Animal Advocacy Africa
-              </a>.
+              This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa.
             </p>
           </div>
           
@@ -46,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ onJoinDirectory }) => {
               <ul className="space-y-5">
                 <li>
                   <a 
-                    href="https://www.animaladvocacyaafrica.org/" 
+                    href="https://www.animaladvocacyafrica.org/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-offwhite/60 hover:text-[#1db4ab] transition-colors group"

@@ -114,15 +114,7 @@ const App: React.FC = () => {
                   <Info className="w-4 h-4 text-[#1db4ab] mt-0.5 shrink-0" />
                   <p className="text-[11px] font-medium text-[#282e3e]/70 leading-relaxed">
                     <span className="font-black text-[#282e3e] uppercase tracking-wider mr-1">DISCLAIMER:</span>
-                    This directory is a community resource. Data is self-reported by listed organisations and not independently verified by {' '}
-                    <a 
-                      href="https://www.animaladvocacyaafrica.org/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-[#282e3e] hover:text-[#1db4ab] transition-colors underline decoration-[#282e3e]/10 underline-offset-4"
-                    >
-                      Animal Advocacy Africa
-                    </a>.
+                    This directory is a community resource. Data is self-reported by listed organisations and not independently verified by Animal Advocacy Africa.
                   </p>
                 </div>
 

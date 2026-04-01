@@ -67,9 +67,9 @@ export const ORGANISATIONS: Organisation[] = [
     logo: 'https://drive.google.com/open?id=1farMnYN8rmdABfQjO6gFWAtaNi5anHSL',
     address: '1007 N Market St Ste G20, Wilmington, DE 19801',
     country: 'Pan-African',
-    email: 'admin@animaladvocacyaafrica.org',
+    email: 'admin@animaladvocacyafrica.org',
     social: 'https://www.linkedin.com/company/animaladvocacyafrica/',
-    website: 'https://www.animaladvocacyaafrica.org/',
+    website: 'https://www.animaladvocacyafrica.org/',
     species: ['Cross-species advocacy'],
     focus: ['Movement & capacity building']
   },
