@@ -660,6 +660,66 @@ export const ORGANISATIONS: Organisation[] = [
     website: 'https://vegansocietyofkenya.co.ke/',
     species: ['Chickens', 'Crustaceans', 'Farmed finfish', 'Large ruminants', 'Other farmed mammals', 'Other poultry', 'Pigs', 'Small ruminants', 'Cross-species advocacy'],
     focus: ['Alternative proteins & food system innovation', 'Corporate & institutional engagement', 'Direct animal assistance', 'Movement & capacity building', 'Public & consumer outreach', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'anaw',
+    name: 'Africa Network for Animal Welfare (ANAW)',
+    logo: 'https://drive.google.com/open?id=1UDzL9DHo1b0MMx6wWAYDpehUTsHN14Fl',
+    address: 'Riverine Nature Reserve, Milima Road, Hardy-Karen Nairobi, Kenya',
+    country: 'Kenya',
+    email: 'info@anaw.org',
+    social: 'https://www.instagram.com/anawafrica/',
+    website: 'https://www.anaw.org',
+    species: ['Chickens', 'Cross-species advocacy'],
+    focus: ['Direct animal assistance', 'Movement & capacity building', 'Policy & legal advocacy', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'utunzi',
+    name: 'Utunzi Africa',
+    logo: 'https://drive.google.com/open?id=1TdqhymRO5hjDMT8YD_lt_VwhFNbUTq7r',
+    address: 'Syokimau, Nairobi, Kenya',
+    country: 'Eritrea, Kenya',
+    email: 'africautunzi@gmail.com',
+    social: 'https://www.linkedin.com/company/utunzianimalwelfare/',
+    website: 'https://utunziafrica.org',
+    species: ['Chickens', 'Farmed finfish', 'Large ruminants', 'Small ruminants'],
+    focus: ['Corporate & institutional engagement', 'Direct animal assistance', 'Movement & capacity building', 'Public & consumer outreach']
+  },
+  {
+    id: 'four-paws-sa',
+    name: 'FOUR PAWS in South Africa',
+    logo: 'https://drive.google.com/open?id=1ifap0CkTNapkGm6Aa2ZK2SrQt_T3qoDe',
+    address: '9B Bell Crescent, Westlake Business Park, Westlake, Cape Town, 7945',
+    country: 'South Africa',
+    email: 'office@four-paws.org.za',
+    social: 'https://www.facebook.com/FOURPAWS.ZA',
+    website: 'https://www.four-paws.org.za/',
+    species: ['Chickens', 'Large ruminants', 'Other farmed mammals', 'Other poultry', 'Pigs', 'Small ruminants'],
+    focus: ['Corporate & institutional engagement', 'Direct animal assistance', 'Policy & legal advocacy', 'Public & consumer outreach', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'taweso',
+    name: 'Tanzania Animal Welfare Society (TAWESO)',
+    logo: 'https://drive.google.com/open?id=1fIoXxNR8PBaecPPyCO0fc_S_AeSgXWt9',
+    address: 'Dar es Salaam, Tanzania',
+    country: 'Tanzania',
+    email: 'taweso@gmail.com',
+    social: 'https://www.facebook.com/TanzaniaAnimalWelfareSociety',
+    website: 'https://taweso.org',
+    species: ['Chickens', 'Farmed finfish', 'Large ruminants', 'Pigs', 'Small ruminants'],
+    focus: ['Corporate & institutional engagement', 'Direct animal assistance', 'Policy & legal advocacy', 'Public & consumer outreach']
+  },
+  {
+    id: 'sdsn-nigeria',
+    name: 'Sustainable Development Solutions Network Nigeria',
+    logo: 'https://drive.google.com/open?id=1_VXmMaXAjlxCiHpdMK-K6TqL7T219z-a',
+    address: '20 Awolowo Avenue Old Bodija, Ibadan, Oyo State, Nigeria',
+    country: 'Benin, Cameroon, DR Congo, Ethiopia, Ghana, Ivory Coast, Kenya, Nigeria, Rwanda, Senegal, South Africa, Uganda',
+    email: 'femigabriel382@gmail.com',
+    social: 'https://www.instagram.com/sdsnnigeria/',
+    website: 'https://www.sdsnnigeria.ng',
+    species: ['Chickens'],
+    focus: ['Corporate & institutional engagement', 'Movement & capacity building', 'Research, investigation & evidence generation']
   }
 ];
 

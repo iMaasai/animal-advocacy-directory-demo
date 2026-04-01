@@ -93,7 +93,7 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         
         {/* Simplified Header with Navigation Only */}
-        <div className="flex items-center justify-between mb-8 sm:mb-12 border-b border-[#e1e9de] pb-6">
+        <div className="flex items-center justify-between mb-8 sm:mb-12 border-b border-offwhite pb-6">
           <div className="flex items-center gap-3">
              <div className="p-2 bg-[#1db4ab]/10 rounded-lg text-[#1db4ab]">
                 <Map className="w-4 h-4" />
@@ -103,7 +103,7 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
 
           <button 
             onClick={onBackToDirectory}
-            className="px-5 py-2.5 bg-[#282e3e] text-white rounded-xl font-black uppercase tracking-[0.2em] text-[9px] flex items-center gap-2 hover:bg-[#1db4ab] transition-all shadow-lg shadow-gray-200"
+            className="px-5 py-2.5 bg-[#282e3e] text-offwhite rounded-xl font-bold uppercase tracking-[0.2em] text-[9px] flex items-center gap-2 hover:bg-[#1db4ab] transition-all shadow-lg shadow-gray-200 lato-font"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Back to Directory
@@ -114,14 +114,14 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
           
           {/* Legend and Stats */}
           <div className="lg:col-span-3 space-y-8 order-2 lg:order-1">
-            <div className="bg-white border-2 border-[#e1e9de] rounded-3xl p-6 shadow-sm">
+            <div className="bg-white border-2 border-offwhite rounded-3xl p-6 shadow-sm">
               <h3 className="text-[10px] font-black text-[#282e3e]/40 uppercase tracking-[0.2em] mb-6">Density Legend</h3>
               <div className="space-y-4">
                 {[
                   { label: 'High Density (6+)', color: 'bg-[#1db4ab]' },
                   { label: 'Active (3-5)', color: 'bg-[#1db4ab]/50' },
                   { label: 'Emerging (1-2)', color: 'bg-[#1db4ab]/20' },
-                  { label: 'No Listed Orgs', color: 'bg-[#e1e9de]/40' }
+                  { label: 'No Listed Orgs', color: 'bg-offwhite/40' }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className={`w-4 h-4 rounded-md ${item.color}`} />
@@ -131,16 +131,16 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
               </div>
             </div>
 
-            <div className="bg-[#282e3e] rounded-3xl p-8 text-white relative overflow-hidden transition-all duration-300">
-              <Sparkles className="absolute -top-4 -right-4 w-24 h-24 text-white/5 rotate-12" />
-              <h3 className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-4">Pan-African Movement</h3>
+            <div className="bg-[#282e3e] rounded-3xl p-8 text-offwhite relative overflow-hidden transition-all duration-300">
+              <Sparkles className="absolute -top-4 -right-4 w-24 h-24 text-offwhite/5 rotate-12" />
+              <h3 className="text-[10px] font-bold text-offwhite/40 uppercase tracking-[0.2em] mb-4 lato-font">Pan-African Movement</h3>
               <div className="text-4xl font-black text-[#1db4ab] mb-2">{stats.panAfricanCount}</div>
-              <p className="text-xs text-white/60 leading-relaxed font-medium mb-6">
+              <p className="text-xs text-offwhite/60 leading-relaxed font-medium mb-6">
                 Organisations working across all regions or strictly at the policy/funding level for the entire continent.
               </p>
               <div className="space-y-2">
                 {visiblePanAfricanOrgs.map((name, idx) => (
-                  <div key={idx} className="flex items-center text-[10px] font-bold text-white/80 animate-in fade-in slide-in-from-left-1 duration-200">
+                  <div key={idx} className="flex items-center text-[10px] font-bold text-offwhite/80 animate-in fade-in slide-in-from-left-1 duration-200">
                     <ChevronRight className="w-3 h-3 mr-1 text-[#1db4ab]" />
                     {name}
                   </div>
@@ -170,7 +170,7 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
           </div>
 
           {/* Map Container */}
-          <div className="lg:col-span-6 relative order-1 lg:order-2 bg-white border-2 border-[#e1e9de] rounded-[3rem] p-4 min-h-[600px] flex items-center justify-center shadow-xl shadow-[#282e3e]/5 overflow-hidden">
+          <div className="lg:col-span-6 relative order-1 lg:order-2 bg-white border-2 border-offwhite rounded-[3rem] p-4 min-h-[600px] flex items-center justify-center shadow-xl shadow-[#282e3e]/5 overflow-hidden">
             {loading ? (
               <div className="flex flex-col items-center gap-4 text-[#282e3e]/40">
                 <Loader2 className="w-10 h-10 animate-spin" />
@@ -205,11 +205,11 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
                   <div className="absolute bottom-12 left-1/2 -translate-x-1/2 bg-[#282e3e] p-6 rounded-2xl shadow-2xl border border-white/10 animate-in fade-in slide-in-from-bottom-2 duration-200 min-w-[200px] z-10 pointer-events-none">
                     <p className="text-[10px] font-black text-[#1db4ab] uppercase tracking-[0.2em] mb-1">{hoveredCountry}</p>
                     <div className="flex items-end justify-between">
-                      <p className="text-2xl font-black text-white">{stats.countryCounts[hoveredCountry]?.count || 0}</p>
-                      <p className="text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">Organisations</p>
+                      <p className="text-2xl font-black text-offwhite">{stats.countryCounts[hoveredCountry]?.count || 0}</p>
+                      <p className="text-[10px] font-black text-offwhite/40 uppercase tracking-widest mb-1">Organisations</p>
                     </div>
                     { (stats.countryCounts[hoveredCountry]?.count || 0) > 0 && (
-                      <p className="text-[9px] text-white/40 mt-3 font-medium italic border-t border-white/5 pt-3">
+                      <p className="text-[9px] text-offwhite/40 mt-3 font-medium italic border-t border-offwhite/10 pt-3">
                         Click to filter directory by this region
                       </p>
                     )}
@@ -230,7 +230,7 @@ const MapView: React.FC<MapViewProps> = ({ organisations, onBackToDirectory, onS
                   .sort((a, b) => b[1].count - a[1].count)
                   .slice(0, 5)
                   .map(([name, data], idx) => (
-                    <div key={idx} className="p-4 bg-white border border-[#e1e9de] rounded-2xl flex items-center justify-between group hover:border-[#1db4ab] transition-all cursor-pointer" onClick={() => {
+                    <div key={idx} className="p-4 bg-white border border-offwhite rounded-2xl flex items-center justify-between group hover:border-[#1db4ab] transition-all cursor-pointer" onClick={() => {
                         track('Map_Country_Clicked', { country: name });
                         onSelectCountry(name);
                     }}>

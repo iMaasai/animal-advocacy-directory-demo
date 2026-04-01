@@ -25,10 +25,10 @@ const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, onQuickFilter 
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#7970af]/10 rounded-full blur-[120px] -ml-48 -mb-48" />
 
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <h1 className="serif-font text-3xl sm:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
-          Discover Farmed Animal Advocacy Organisations in Africa.
+        <h1 className="serif-font text-3xl sm:text-6xl font-bold text-offwhite leading-tight mb-6 tracking-tight">
+          Discover <span className="text-[#7970af]">Farmed</span> Animal Advocacy Organisations in Africa.
         </h1>
-        <p className="text-sm sm:text-base text-[#e1e9de]/70 mb-12 max-w-xl mx-auto font-medium tracking-wide">
+        <p className="text-sm sm:text-base text-offwhite/70 mb-12 max-w-xl mx-auto font-normal tracking-wide">
           <span className="serif-font italic opacity-80">A centralised hub to foster collaboration and transparency within the movement.</span>
         </p>
         
@@ -46,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, onQuickFilter 
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-3">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mr-2">Quick Access:</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-offwhite/40 mr-2">Quick Access:</span>
           <div className="flex flex-wrap justify-center gap-2 max-w-lg">
             {quickFilters.map((filter) => (
               <button
@@ -55,7 +55,7 @@ const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, onQuickFilter 
                   track('Filter_Used', { category: 'Quick_Access', value: filter.name });
                   onQuickFilter(filter.name);
                 }}
-                className="px-5 py-2 bg-white/5 border border-white/20 rounded-full text-[10px] font-black uppercase tracking-widest text-white hover:bg-white hover:text-[#282e3e] hover:border-white transition-all active:scale-95"
+                className="px-5 py-2 bg-white/5 border border-white/20 rounded-full text-[10px] font-black uppercase tracking-widest text-offwhite hover:bg-white hover:text-[#282e3e] hover:border-white transition-all active:scale-95"
               >
                 {filter.name}
               </button>

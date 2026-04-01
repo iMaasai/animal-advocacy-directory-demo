@@ -73,7 +73,7 @@ export const GetListedModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             target="_blank" 
             rel="noopener noreferrer"
             onClick={() => track('Get_Listed_Clicked', { location: 'Modal' })}
-            className="w-full py-5 bg-[#1db4ab] text-white rounded-2xl font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 shadow-xl shadow-teal-900/10 hover:bg-[#169d95] transition-all transform hover:-translate-y-1 active:translate-y-0"
+            className="w-full py-5 bg-[#1db4ab] text-offwhite rounded-2xl font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 shadow-xl shadow-teal-900/10 hover:bg-[#169d95] transition-all transform hover:-translate-y-1 active:translate-y-0 lato-font"
           >
             CONTINUE TO APPLICATION
             <ExternalLink className="w-4 h-4" />
@@ -318,7 +318,7 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
         <div className="p-6 border-t border-[#e1e9de] bg-[#fcfdfc] flex justify-end">
           <button 
             onClick={onClose}
-            className="px-8 py-3 bg-[#282e3e] text-white rounded-xl font-black uppercase tracking-[0.2em] text-xs hover:bg-[#1db4ab] transition-all"
+            className="px-8 py-3 bg-[#282e3e] text-offwhite rounded-xl font-bold uppercase tracking-[0.2em] text-xs hover:bg-[#1db4ab] transition-all lato-font"
           >
             Done Reviewing
           </button>
@@ -374,7 +374,7 @@ export const ShareModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           />
           <button 
             onClick={handleCopy}
-            className={`px-4 rounded-xl transition-all flex items-center justify-center ${copied ? 'bg-[#b2a942] text-white' : 'bg-[#1db4ab] text-white hover:bg-[#169d95]'}`}
+            className={`px-4 rounded-xl transition-all flex items-center justify-center ${copied ? 'bg-[#b2a942] text-offwhite' : 'bg-[#1db4ab] text-offwhite hover:bg-[#169d95]'}`}
           >
             {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
           </button>
@@ -413,7 +413,7 @@ export const FeedbackModal: React.FC<ModalProps> = ({ isOpen, onClose, isBluepri
         {!response ? (
           <>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[#b2a942] rounded-xl flex items-center justify-center text-white">
+              <div className="w-10 h-10 bg-[#b2a942] rounded-xl flex items-center justify-center text-offwhite">
                 <MessageSquareHeart className="w-6 h-6" />
               </div>
               <div>
@@ -450,7 +450,7 @@ export const FeedbackModal: React.FC<ModalProps> = ({ isOpen, onClose, isBluepri
             <button 
               onClick={handleSubmit}
               disabled={loading || !feedback.trim()}
-              className="w-full py-4 bg-[#1db4ab] text-white rounded-xl font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2 hover:bg-[#169d95] transition-all disabled:opacity-50"
+              className="w-full py-4 bg-[#1db4ab] text-offwhite rounded-xl font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2 hover:bg-[#169d95] transition-all disabled:opacity-50 lato-font"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Send className="w-4 h-4" /> Submit for Review</>}
             </button>
@@ -464,7 +464,7 @@ export const FeedbackModal: React.FC<ModalProps> = ({ isOpen, onClose, isBluepri
             <p className="text-sm text-[#282e3e]/70 font-medium leading-relaxed mb-8 italic">"{response}"</p>
             <button 
               onClick={() => { setResponse(null); setFeedback(''); onClose(); }}
-              className="px-8 py-3 bg-[#282e3e] text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#1db4ab] transition-all"
+              className="px-8 py-3 bg-[#282e3e] text-offwhite rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#1db4ab] transition-all"
             >
               Close
             </button>

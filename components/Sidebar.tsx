@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
         <h3 className="text-[10px] font-black text-[#282e3e]/40 uppercase tracking-[0.2em] flex items-center group-hover:text-[#1db4ab] transition-colors">
           {title}
           {selectedItems.length > 0 && (
-            <span className="ml-2 bg-[#1db4ab] text-white text-[8px] px-1.5 py-0.5 rounded-full">
+            <span className="ml-2 bg-[#1db4ab] text-offwhite text-[8px] px-1.5 py-0.5 rounded-full font-bold lato-font">
               {selectedItems.length}
             </span>
           )}
@@ -74,9 +74,9 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
                 <div className={`w-5 h-5 border-2 rounded-md transition-all flex items-center justify-center ${
                   selectedItems.includes(item) 
                   ? 'bg-[#1db4ab] border-[#1db4ab]' 
-                  : 'bg-white border-[#e1e9de] group-hover:border-[#1db4ab]/30'
+                  : 'bg-white border-offwhite group-hover:border-[#1db4ab]/30'
                 }`}>
-                  {selectedItems.includes(item) && <Check className="w-3.5 h-3.5 text-white" />}
+                  {selectedItems.includes(item) && <Check className="w-3.5 h-3.5 text-offwhite" />}
                 </div>
               </div>
               <span className={`ml-3 text-xs font-bold transition-colors leading-none ${
@@ -110,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
             onFilterChange({ ...filters, regions: toggleItem(filters.regions, val) });
           }} 
         />
-        <div className="h-px bg-[#e1e9de]/50 my-2" />
+        <div className="h-px bg-offwhite/50 my-2" />
         <FilterGroup 
           title="Interventions" 
           items={FOCI} 
@@ -122,7 +122,7 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
             onFilterChange({ ...filters, foci: toggleItem(filters.foci, val) });
           }} 
         />
-        <div className="h-px bg-[#e1e9de]/50 my-2" />
+        <div className="h-px bg-offwhite/50 my-2" />
         <FilterGroup 
           title="Animal Species" 
           items={SPECIES} 
@@ -139,7 +139,7 @@ const Sidebar: React.FC<SidebarProps> = ({ filters, onFilterChange }) => {
       {(filters.regions.length > 0 || filters.foci.length > 0 || filters.species.length > 0) && (
         <button 
           onClick={() => onFilterChange({ searchQuery: filters.searchQuery, regions: [], foci: [], species: [] })}
-          className="w-full mt-8 py-2 text-[10px] font-black text-[#1db4ab] border-2 border-[#1db4ab] rounded-lg hover:bg-[#1db4ab]/5 transition-colors uppercase tracking-widest"
+          className="w-full mt-8 py-2 text-[10px] font-bold text-[#1db4ab] border-2 border-[#1db4ab] rounded-lg hover:bg-[#1db4ab]/5 transition-colors uppercase tracking-widest lato-font"
         >
           Reset All Filters
         </button>

@@ -38,13 +38,13 @@ const OrgCard: React.FC<OrgCardProps> = ({ org, onViewDetails }) => {
   };
 
   return (
-    <div className="group bg-white rounded-2xl border border-[#e1e9de] p-6 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+    <div className="group bg-white rounded-2xl border border-offwhite p-6 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 flex flex-col h-full relative overflow-hidden">
       <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#1db4ab]/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
       
       <div className="flex items-start mb-6">
         <div 
           onClick={handleViewDetails}
-          className="w-14 h-14 rounded-xl bg-gray-50 overflow-hidden border border-[#e1e9de] flex-shrink-0 flex items-center justify-center text-[#1db4ab] font-black text-xl cursor-pointer hover:border-[#1db4ab] transition-all"
+          className="w-14 h-14 rounded-xl bg-gray-50 overflow-hidden border border-offwhite flex-shrink-0 flex items-center justify-center text-[#1db4ab] font-black text-xl cursor-pointer hover:border-[#1db4ab] transition-all"
         >
           {org.logo ? (
             <img 
@@ -111,24 +111,24 @@ const OrgCard: React.FC<OrgCardProps> = ({ org, onViewDetails }) => {
       <div className="mt-auto space-y-2">
         <div className="flex gap-2">
           {org.website && (
-            <a href={org.website} target="_blank" rel="noopener noreferrer" onClick={() => handleExternalLink('Website')} className="p-2 bg-[#e1e9de]/30 rounded-lg text-[#282e3e]/60 hover:text-[#1db4ab] hover:bg-[#1db4ab]/10 transition-all">
+            <a href={org.website} target="_blank" rel="noopener noreferrer" onClick={() => handleExternalLink('Website')} className="p-2 bg-offwhite/30 rounded-lg text-[#282e3e]/60 hover:text-[#1db4ab] hover:bg-[#1db4ab]/10 transition-all">
               <Globe className="w-4 h-4" />
             </a>
           )}
           {org.social && (
-            <a href={org.social.startsWith('http') ? org.social : `https://${org.social}`} target="_blank" rel="noopener noreferrer" onClick={() => handleExternalLink('Social Media')} className="p-2 bg-[#e1e9de]/30 rounded-lg text-[#282e3e]/60 hover:text-[#1db4ab] hover:bg-[#1db4ab]/10 transition-all">
+            <a href={org.social.startsWith('http') ? org.social : `https://${org.social}`} target="_blank" rel="noopener noreferrer" onClick={() => handleExternalLink('Social Media')} className="p-2 bg-offwhite/30 rounded-lg text-[#282e3e]/60 hover:text-[#1db4ab] hover:bg-[#1db4ab]/10 transition-all">
               {getSocialIcon(org.social)}
             </a>
           )}
           {org.email && (
-            <a href={`mailto:${org.email}`} onClick={() => handleExternalLink('Email')} className="p-2 bg-[#e1e9de]/30 rounded-lg text-[#282e3e]/60 hover:text-[#1db4ab] hover:bg-[#1db4ab]/10 transition-all" title={`Email ${org.name}`}>
+            <a href={`mailto:${org.email}`} onClick={() => handleExternalLink('Email')} className="p-2 bg-offwhite/30 rounded-lg text-[#282e3e]/60 hover:text-[#1db4ab] hover:bg-[#1db4ab]/10 transition-all" title={`Email ${org.name}`}>
               <Mail className="w-4 h-4" />
             </a>
           )}
         </div>
         <button 
           onClick={handleViewDetails}
-          className="w-full py-3 border-2 border-[#e1e9de] text-[#1db4ab] font-black text-xs uppercase tracking-[0.2em] rounded-xl flex items-center justify-center hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all"
+          className="w-full py-3 border-2 border-offwhite text-[#1db4ab] font-black text-xs uppercase tracking-[0.2em] rounded-xl flex items-center justify-center hover:border-[#1db4ab] hover:bg-[#1db4ab]/5 transition-all"
         >
           Full Profile
           <ExternalLink className="w-3.5 h-3.5 ml-2" />

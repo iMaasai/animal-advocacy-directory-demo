@@ -18,10 +18,10 @@ const Navbar: React.FC<NavbarProps> = ({ onGetListed, currentView, onViewChange 
               onClick={() => onViewChange('directory')}
               className="text-sm sm:text-base font-black tracking-tight flex items-center hover:opacity-80 transition-opacity"
             >
-              <span className="text-white">Farmed</span>
+              <span className="text-brandpurple">Farmed</span>
               <span className="text-[#1db4ab] ml-1">Animal</span>
               <span className="text-[#b2a942] ml-1">Advocacy</span>
-              <span className="uppercase text-[10px] font-bold tracking-[0.1em] text-white/40 ml-2">Directory</span>
+              <span className="uppercase text-[10px] font-bold tracking-[0.1em] text-offwhite/40 ml-2">Directory</span>
             </button>
           </div>
           
@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGetListed, currentView, onViewChange 
                 track('View_Mode_Changed', { mode: newMode });
                 onViewChange(newMode);
               }}
-              className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all"
+              className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-offwhite rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all lato-font"
             >
               {currentView === 'directory' ? (
                 <>
@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGetListed, currentView, onViewChange 
                 track('Get_Listed_Clicked', { location: 'Navbar' });
                 onGetListed();
               }}
-              className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all"
+              className="flex items-center px-4 py-2 bg-white/5 border border-white/10 text-offwhite rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all lato-font"
             >
               <PlusSquare className="w-3.5 h-3.5 mr-2 text-[#1db4ab]" />
               Get Listed

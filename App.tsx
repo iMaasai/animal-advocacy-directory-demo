@@ -110,7 +110,7 @@ const App: React.FC = () => {
 
               <div className="flex-grow">
                 {/* Data Sourcing Disclaimer Banner */}
-                <div className="mb-8 p-4 bg-[#e1e9de]/30 border border-[#e1e9de] rounded-2xl flex items-start gap-3">
+                <div className="mb-8 p-4 bg-offwhite/30 border border-offwhite rounded-2xl flex items-start gap-3">
                   <Info className="w-4 h-4 text-[#1db4ab] mt-0.5 shrink-0" />
                   <p className="text-[11px] font-medium text-[#282e3e]/70 leading-relaxed">
                     <span className="font-black text-[#282e3e] uppercase tracking-wider mr-1">DISCLAIMER:</span>
@@ -118,7 +118,7 @@ const App: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between mb-8 border-b border-[#e1e9de] pb-6">
+                <div className="flex items-center justify-between mb-8 border-b border-offwhite pb-6">
                   <div className="flex items-center">
                     <LayoutGrid className="w-5 h-5 text-[#282e3e]/20 mr-2" />
                     <h2 className="text-xl font-bold text-[#282e3e]">
@@ -147,7 +147,7 @@ const App: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-white rounded-3xl border-2 border-dashed border-[#e1e9de] py-20 px-10 text-center">
+                  <div className="bg-white rounded-3xl border-2 border-dashed border-offwhite py-20 px-10 text-center">
                     <div className="w-20 h-20 bg-[#e1e9de]/20 rounded-full flex items-center justify-center mx-auto mb-6">
                       <SearchX className="w-10 h-10 text-[#282e3e]/10" />
                     </div>
@@ -157,7 +157,7 @@ const App: React.FC = () => {
                     </p>
                     <button 
                       onClick={() => setFilters({ searchQuery: '', regions: [], foci: [], species: [] })}
-                      className="mt-8 px-8 py-3 bg-[#282e3e] text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#1db4ab] transition-all"
+                      className="mt-8 px-8 py-3 bg-[#282e3e] text-offwhite rounded-full font-bold text-xs uppercase tracking-widest hover:bg-[#1db4ab] transition-all lato-font"
                     >
                       Reset All Filters
                     </button>
@@ -197,7 +197,6 @@ const App: React.FC = () => {
         onClose={() => setSelectedOrg(null)}
         onSelectOrg={setSelectedOrg}
       />
-      <Analytics />
     </div>
   );
 };
