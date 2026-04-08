@@ -271,7 +271,7 @@ export const OrgDetailModal: React.FC<OrgDetailModalProps> = ({ org, isOpen, onC
           </div>
 
           {/* Similar Organisations Section */}
-          {similarOrgs.length > 0 && (
+          {false && similarOrgs.length > 0 && (
             <div className="mt-16 pt-10 border-t border-[#e1e9de]">
               <div className="flex items-center justify-between mb-8">
                 <div>

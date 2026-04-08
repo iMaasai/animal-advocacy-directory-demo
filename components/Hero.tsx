@@ -26,7 +26,7 @@ const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, onQuickFilter 
 
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
         <h1 className="serif-font text-3xl sm:text-6xl font-bold text-offwhite leading-tight mb-6 tracking-tight">
-          Discover <span className="text-[#7970af]">Farmed</span> Animal Advocacy Organisations in Africa.
+          Discover Farmed Animal Advocacy Organisations in Africa.
         </h1>
         <p className="text-sm sm:text-base text-offwhite/70 mb-12 max-w-xl mx-auto font-normal tracking-wide">
           <span className="serif-font italic opacity-80">A centralised hub to foster collaboration and transparency within the movement.</span>
