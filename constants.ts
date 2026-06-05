@@ -720,6 +720,30 @@ export const ORGANISATIONS: Organisation[] = [
     website: 'https://www.sdsnnigeria.ng',
     species: ['Chickens'],
     focus: ['Corporate & institutional engagement', 'Movement & capacity building', 'Research, investigation & evidence generation']
+  },
+  {
+    id: 'rootalliance',
+    name: 'The Root Alliance',
+    logo: 'https://drive.google.com/open?id=1YdkFMe6m0YH2UpMTK0PzY-bPHsfzdafC',
+    address: '',
+    country: 'Benin, Gambia, Ghana, Kenya, Tanzania, Uganda',
+    email: 'enric@therootalliance.org',
+    social: 'https://www.linkedin.com/company/the-root-alliance/',
+    website: '',
+    species: ['Cross-species advocacy'],
+    focus: ['Alternative proteins & food system innovation', 'Movement & capacity building', 'Policy & legal advocacy']
+  },
+  {
+    id: 'vawi',
+    name: 'Veterinarians for Animal Welfare Initiative',
+    logo: 'https://drive.google.com/open?id=1VWuC1rfgP5ipfhNG9UOeCW0YDw65GcGQ',
+    address: 'Bauchi State, Nigeria',
+    country: 'Nigeria',
+    email: 'info@vawinitiative.org',
+    social: 'https://www.linkedin.com/company/veterinarians-for-animal-welfare-initiative-vawi/',
+    website: 'https://www.vawinitiative.org',
+    species: ['Chickens', 'Farmed finfish', 'Large ruminants', 'Other farmed mammals', 'Other poultry', 'Pigs', 'Small ruminants', 'Cross-species advocacy'],
+    focus: ['Alternative proteins & food system innovation', 'Corporate & institutional engagement', 'Direct animal assistance', 'Movement & capacity building', 'Public & consumer outreach', 'Research, investigation & evidence generation', 'Protest & disruptive activism']
   }
 ];
 
