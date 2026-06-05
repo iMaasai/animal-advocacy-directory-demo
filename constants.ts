@@ -364,7 +364,7 @@ export const ORGANISATIONS: Organisation[] = [
   {
     id: 'humanetrust',
     name: 'The Humane Education Trust',
-    logo: 'https://drive.google.com/open?id=1KNn6D943Un_sT-W07c1aAy10nHsv2d0Y',
+    logo: 'https://drive.google.com/open?id=1AV2CBHpmaR-aMZW4FyUOoD7K4VTv2aVh',
     address: 'Cape Town, South Africa',
     country: 'South Africa',
     email: 'avoice@yebo.co.za',
