@@ -243,7 +243,7 @@ export const ORGANISATIONS: Organisation[] = [
   },
   {
     id: 'nuru',
-    name: 'NURU ANIMAL WELWARE ORGANIZATION',
+    name: 'NURU ANIMAL WELFARE ORGANIZATION',
     logo: 'https://drive.google.com/open?id=11QIG2_NBz405vwEDv99BFqnEOAIdq9F2',
     address: 'NJORO, NAKURU COUNTY, KENYA',
     country: 'Kenya',
