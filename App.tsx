@@ -174,7 +174,6 @@ const App: React.FC = () => {
           onSelectCountry={handleCountrySelection}
         />
       )}
-      <Analytics />
       <Footer onJoinDirectory={() => setIsGetListedOpen(true)} />
 
       <ShareModal 
